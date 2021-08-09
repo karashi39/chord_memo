@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chord Memo</title>
+  <meta charset="utf-8"/>
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css" integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5" crossorigin="anonymous">
+</head>
+<body>
+  <div id="app">
+    <h1>{{ title }}</h1>
+    <h2>作曲:{{ musicby }} 作詞:{{wordsby}}</h2>
+    <h3>{{beats}}拍子<h3>
+    <div v-for="line in lines" class="pure-g">
+      <div v-if="line.type === 'chord'" class="pure-u-1-1">
+        <div v-for="bar in line.bars" class="pure-u-1-4">
+          <div v-for="beat in bar" class="pure-u-1-4">
+          <span style="color: blue;">{{ beat }}</span>
+          </div>
+        </div>
+      </div>
+      <div v-else-if="line.type === 'word'" class="pure-u-1-1">
+        <div v-for="bar in line.bars" class="pure-u-1-4">
+          {{ bar }}
+        </div>
+      </div>
+      <div v-else class="pure-u-1-1"><br></div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/vue"></script>
+  <script src="app.js"></script>
+</body>
+</html>
